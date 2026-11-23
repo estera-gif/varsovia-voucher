@@ -51,12 +51,21 @@
   }
 
   /* --- znak --- */
-  .mark{display:block;text-align:center;color:var(--butter);--hole:var(--sky);text-decoration:none;margin-bottom:26px}
+  .mark{display:block;text-align:center;color:var(--butter);--hole:var(--sky);text-decoration:none;margin-bottom:26px;
+    animation:drop .9s cubic-bezier(.2,.9,.25,1.12) both}
+  @keyframes drop{
+    from{opacity:0;transform:translateY(-70px)}
+    to{opacity:1;transform:none}
+  }
   .mark .word{
     display:inline-flex;align-items:center;gap:.02em;
     font-weight:800;font-stretch:100%;font-size:2.05rem;letter-spacing:.02em;line-height:1;
   }
-  .mark .word svg{width:.86em;height:.86em;margin:0 .02em;transform:translateY(.01em)}
+  .mark .word svg{width:.86em;height:.86em;margin:0 .02em;transform:translateY(.01em);animation:twirl 1.3s cubic-bezier(.3,.7,.3,1) .15s both}
+  @keyframes twirl{
+    from{transform:translateY(.01em) rotate(-200deg)}
+    to{transform:translateY(.01em) rotate(0)}
+  }
   .mark .sub{display:block;font-weight:800;font-size:.68rem;letter-spacing:.28em;margin-top:6px;padding-left:.28em}
 
   /* --- zdjęcie (łuk) --- */
@@ -90,7 +99,7 @@
     padding:22px 22px 20px;
     transform:rotate(-1.6deg);
     box-shadow:0 18px 30px -18px rgba(28,42,79,.55);
-    animation:land .9s cubic-bezier(.2,.9,.25,1.15) .15s both;
+    animation:land .9s cubic-bezier(.2,.9,.25,1.15) .5s both;
   }
   @keyframes land{
     from{opacity:0;transform:translateY(40px) rotate(-7deg)}
@@ -163,7 +172,7 @@
     .bloom .f5{right:8%}
   }
   @media (prefers-reduced-motion:reduce){
-    .ticket{animation:none}
+    .ticket,.mark,.mark .word svg{animation:none}
     .copy{transition:none}
   }
 </style>
@@ -204,7 +213,7 @@
   </figure>
 
   <h1>Dziękuję Ci za obecność</h1>
-  <p class="lead">To dzięki takim osobom jak Ty ta społeczność w ogóle ma sens. Na kolejne spotkanie masz od nas mały prezent.</p>
+  <p class="lead">To dzięki takim osobom jak Ty ta społeczność w ogóle ma sens. Na kolejne spotkanie masz ode mnie mały prezent.</p>
 
   <section class="ticket" aria-labelledby="voucher-title">
     <svg class="flower" viewBox="0 0 100 100" aria-hidden="true"><use href="#fl"/></svg>
